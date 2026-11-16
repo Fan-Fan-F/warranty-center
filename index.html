@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>质保中心 · Warranty Center</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="wrap">
+  <header class="head">
+    <h1>🛡️ 质保中心</h1>
+    <p>序列号登记质保 · 到期查询 · 在线报修</p>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="register">登记质保</button>
+    <button class="tab" data-tab="query">质保查询</button>
+    <button class="tab" data-tab="repair">报修记录</button>
+  </div>
+
+  <!-- 登记 -->
+  <section id="tab-register" class="card">
+    <h2>登记新设备</h2>
+    <label>产品序列号（SN）
+      <input id="snInput" placeholder="如 KB2026-88341，连字符可选">
+    </label>
+    <label>购买日期
+      <input id="buyDate" type="date">
+    </label>
+    <label>购买渠道
+      <select id="channel">
+        <option>官方旗舰店</option><option>授权经销商</option>
+        <option>线下门店</option><option>二手转让</option>
+      </select>
+    </label>
+    <button id="regBtn" class="primary">登记并激活质保</button>
+    <div id="regResult" class="result-box" hidden></div>
+    <p class="hint">💡 演示 SN 前缀规则：<code>KB-</code>键盘 · <code>HP-</code>耳机 · <code>SP-</code>音箱 · <code>WM-</code>手表（如 HP2026-10293）</p>
+  </section>
+
+  <!-- 查询 -->
+  <section id="tab-query" class="card" hidden>
+    <h2>质保状态查询</h2>
+    <div class="q-row">
+      <input id="qInput" placeholder="输入序列号查询">
+      <button id="qBtn" class="primary-sm">查询</button>
+    </div>
+    <div id="qResult"></div>
+  </section>
+
+  <!-- 报修 -->
+  <section id="tab-repair" class="card" hidden>
+    <h2>报修记录</h2>
+    <div id="repairList"></div>
+    <div id="repairForm" hidden>
+      <h3 style="margin-top:16px">新建报修单 · <span id="repairSn" class="mono"></span></h3>
+      <label>故障类型
+        <select id="faultType">
+          <option>无法开机</option><option>功能异常</option>
+          <option>外观损坏</option><option>异响/异味</option><option>其他</option>
+        </select>
+      </label>
+      <label>故障描述<textarea id="faultDesc" placeholder="描述故障现象与出现频率…"></textarea></label>
+      <label>联系方式<input id="faultPhone" placeholder="手机号码"></label>
+      <button id="repairBtn" class="primary">提交报修单</button>
+    </div>
+  </section>
+</main>
+
+<script src="products.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
